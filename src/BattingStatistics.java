@@ -22,7 +22,7 @@ public class BattingStatistics {
 
             //4. Input at-bat results into array
             fillArray(scan, battingResults);
-            
+
 //        5. Calculate batting average
             getBattingAvg(timesAtBat, battingResults);
 
@@ -47,18 +47,16 @@ public class BattingStatistics {
 
     public static void fillArray(Scanner scan, int[] battingResults) {
         for (int i = 0; i < battingResults.length; i++) {
-            System.out.print("Please enter result for at-bat " + i + " : ");
+            System.out.print("Please enter result for at-bat " + (i + 1) + " : ");
             int userNum = scan.nextInt();
-            battingResults[i] = userNum;
-            while (!(userNum >= 0 && userNum <= 4)) {
-                if (userNum < 0 || userNum > 4) {
-                    System.out.println("Invalid entry, try a number 0-4");
-                    userNum = scan.nextInt();
-                    continue;
-                }
+            while (userNum < 0 || userNum > 4) {
+                System.out.println("Invalid entry, try a number 0-4");
+                userNum = scan.nextInt();
             }
+            battingResults[i] = userNum;
         }
     }
+
 
     public static void getBattingAvg(int timesAtBat, int[] battingResults) {
         double sum = 0;
